@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tacos Beto | Dalton GA | Authentic Tacos & Mexican Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #c41e3a;
+      --red-dark: #9e1830;
+      --cream: #f8f4ef;
+      --brown: #5c4033;
+      --brown-light: #8b6f47;
+      --white: #fff;
+      --shadow: rgba(92, 64, 51, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--brown);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      box-shadow: 0 2px 20px var(--shadow);
+      z-index: 1000;
+    }
+
+    nav .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--red);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(92, 64, 51, 0.4), rgba(92, 64, 51, 0.5)), url('assets/exterior.png') center/cover no-repeat;
+      color: var(--white);
+      padding: 8rem 1.5rem 4rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--red-dark);
+    }
+
+    /* Sections */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--brown);
+    }
+
+    section .subtitle {
+      color: var(--brown-light);
+      margin-bottom: 3rem;
+    }
+
+    /* Menu */
+    #menu {
+      background: var(--white);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-item {
+      padding: 1.5rem;
+      background: var(--cream);
+      border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+
+    .menu-item h3 {
+      font-size: 1.25rem;
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-item .description {
+      font-size: 0.95rem;
+      color: var(--brown-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .menu-item .price {
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    /* About */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-content img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px var(--shadow);
+    }
+
+    .about-content blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--red);
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Gallery */
+    #gallery {
+      background: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.2s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Facebook */
+    #facebook {
+      background: var(--cream);
+    }
+
+    .facebook-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .facebook-embed {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 20px var(--shadow);
+      min-height: 500px;
+    }
+
+    .facebook-embed iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .facebook-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--red);
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    .facebook-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .facebook-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Map & Contact */
+    #location {
+      background: var(--white);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      aspect-ratio: 4/3;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contact-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--brown);
+    }
+
+    .contact-info p {
+      margin-bottom: 1.5rem;
+      color: var(--brown-light);
+    }
+
+    .contact-info a {
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--cream);
+    }
+
+    @media (max-width: 768px) {
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">Tacos Beto</a>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#facebook">Facebook</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Tacos Beto</h1>
+      <p>Authentic Mexican tacos & more in Dalton, GA — tortillas de maíz, quesadillas, burritos & house specials</p>
+      <a href="#menu" class="btn">View Menu</a>
+    </div>
+  </header>
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <p class="subtitle">House Specials</p>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <h3>Taco con Tortilla de Maíz</h3>
+        <p class="description">Tortilla de maíz, cilantro, cebolla, y carne a su selección. Corn tortilla, cilantro, onion, and your choice of meat.</p>
+        <p class="price">$1.50</p>
+      </div>
+      <div class="menu-item">
+        <h3>Taco con Tortilla de Harina</h3>
+        <p class="description">Tortilla de harina, cilantro, cebolla, y carne a su selección. Flour tortilla, cilantro, onion, and your choice of meat.</p>
+        <p class="price">$2.00</p>
+      </div>
+      <div class="menu-item">
+        <h3>Quesadilla</h3>
+        <p class="description">Tortilla de harina, queso, y carne a su selección. 10" flour tortilla, cheese, and choice of meat.</p>
+        <p class="price">$4.00</p>
+      </div>
+      <div class="menu-item">
+        <h3>Burrito</h3>
+        <p class="description">Tortilla de harina, queso, y carne a su selección. 12" flour tortilla, choice of meat, rice, beans, and cheese.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Burrito with Cheese Dip</h3>
+        <p class="description">12" flour tortilla, choice of meat, rice, beans, and cheese — served with cheese dip.</p>
+      </div>
+      <div class="menu-item">
+        <h3>Burrito Supremo</h3>
+        <p class="description">Tortilla de harina, carne a su selección, arroz, frijoles, queso, tomate, lechuga, cebolla, y crema. 12" flour tortilla, choice of meat, rice, beans, cheese, tomato, lettuce, cilantro, and sour cream.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p class="subtitle">Authentic Mexican flavors in Dalton</p>
+    <div class="about-content">
+      <img src="assets/exterior.png" alt="Tacos Beto exterior - 1009 E Morris St, Dalton GA">
+      <div>
+        <p>Tacos Beto is your neighborhood spot for authentic Mexican tacos and comfort food in Dalton, Georgia. We serve house-made tortillas de maíz and harina, fresh cilantro and onion, and your choice of meat in every bite. Whether you're craving street-style tacos, a hearty burrito, or a cheesy quesadilla, we've got you covered. Come visit us and taste the difference — Bienvenidos!</p>
+        <blockquote>Bienvenidos a Tacos Beto</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <p class="subtitle">A peek at our food</p>
+    <div class="gallery-grid">
+      <img src="assets/tacos-plate.png" alt="Street-style tacos with cilantro and onion">
+      <img src="assets/tacos-foil.png" alt="Tacos con tortilla de maíz">
+      <img src="assets/quesadilla.png" alt="Quesadilla with rice and beans">
+      <img src="assets/burrito.png" alt="Burrito supremo">
+      <img src="assets/nachos.png" alt="Chicken nachos">
+      <img src="assets/menudo.png" alt="Menudo - traditional Mexican soup">
+    </div>
+  </section>
+
+  <section id="facebook">
+    <h2>Follow Us</h2>
+    <p class="subtitle">Stay connected for updates, specials & photos</p>
+    <div class="facebook-section">
+      <div>
+        <h3>Facebook</h3>
+        <p>See what's cooking at Tacos Beto — check out our latest posts, photos, and specials.</p>
+        <a href="https://www.facebook.com/tacosbetoindalton" target="_blank" rel="noopener noreferrer" class="facebook-link">View on Facebook →</a>
+      </div>
+      <div class="facebook-embed">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ftacosbetoindalton&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" style="border:none;overflow:hidden" scrolling="yes" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <h2>Find Us</h2>
+    <p class="subtitle">Visit us in Dalton</p>
+    <div class="location-grid">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=1009+E+Morris+St+Dalton+GA+30721&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Tacos Beto Location"></iframe>
+      </div>
+      <div>
+        <div class="contact-info">
+          <h3>Address</h3>
+          <p>1009 E Morris St<br>Dalton, GA 30721</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=1009+E+Morris+St,+Dalton,+GA+30721" target="_blank" rel="noopener noreferrer">Get Directions</a>
+        </div>
+        <div class="contact-info" id="contact">
+          <h3>Hours</h3>
+          <ul class="hours-list">
+            <li><span>Mon</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Tue</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Wed</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Thu</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Fri</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Sat</span><span>9:00 AM – 8:00 PM</span></li>
+            <li><span>Sun</span><span>9:00 AM – 8:00 PM</span></li>
+          </ul>
+        </div>
+        <div class="contact-info">
+          <h3>Call Us</h3>
+          <p><a href="tel:+17062784595">(706) 278-4595</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Tacos Beto. Dalton, GA.
+  </footer>
+</body>
+</html>
